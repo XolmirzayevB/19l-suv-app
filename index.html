@@ -151,6 +151,25 @@
 </style>
 </head>
 <body>
+<script>
+/* Xato ushlagich: oppoq ekran o'rniga xatoni ko'rsatadi */
+window.__err=function(msg){
+  var d=document.getElementById('fatal');
+  if(!d){d=document.createElement('div');d.id='fatal';
+    d.style.cssText='position:fixed;left:0;right:0;top:0;background:#fff;color:#b1241b;padding:20px;font:13px/1.5 ui-monospace,Menlo,monospace;white-space:pre-wrap;word-break:break-word;z-index:99999;border-bottom:3px solid #b1241b;max-height:60vh;overflow:auto;box-shadow:0 8px 24px -10px rgba(0,0,0,.3)';
+    (document.body||document.documentElement).appendChild(d);}
+  d.textContent='⚠️ Xato (shu yozuvni skrinshot qiling):\n\n'+msg;
+};
+window.addEventListener('error',function(e){
+  var m=e.message||'Skript yuklanmadi';
+  if(e.filename)m+='\n'+e.filename;
+  if(e.lineno)m+=' : '+e.lineno;
+  window.__err(m);
+},true);
+window.addEventListener('unhandledrejection',function(e){
+  var r=e.reason; window.__err('Promise xatosi: '+((r&&r.message)?r.message:String(r)));
+});
+</script>
 
 <!-- CONFIG -->
 <div id="screen-config" class="center hidden">
@@ -710,7 +729,7 @@ async function init(){
   const {data:{session}}=await sb.auth.getSession();
   if(session){await enterApp();}else{show('screen-login');}
 }
-init();
+init().catch(function(e){if(window.__err)window.__err((e&&e.message)?e.message:String(e));});
 </script>
 </body>
 </html>
