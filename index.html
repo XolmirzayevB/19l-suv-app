@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>19L Suv — Boshqaruv</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#eaf3f5; --surface:#ffffff; --ink:#0b2a33; --muted:#5e7d87;
+    --line:#d8e6ea; --primary:#0892b0; --primary-deep:#066a82; --primary-soft:#d5eef4;
+    --ok:#15926b; --warn:#c9842b; --err:#c44536;
+    --shadow:0 10px 40px -18px rgba(6,80,100,.35);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif; font-size:15px; line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.brandname{font-family:'Sora',sans-serif; letter-spacing:-.01em}
+  .num{font-variant-numeric:tabular-nums}
+  button{font-family:inherit; cursor:pointer}
+  input,select{font-family:inherit; font-size:15px}
+  .hidden{display:none !important}
+
+  /* Droplet mark */
+  .drop{width:34px;height:34px;flex:none}
+  .brand{display:flex; align-items:center; gap:10px}
+  .brandname{font-weight:700; font-size:18px}
+  .brandname b{color:var(--primary-deep)}
+
+  /* ---- Centered screens (config / login) ---- */
+  .center{min-height:100dvh; display:flex; align-items:center; justify-content:center; padding:22px}
+  .card{
+    background:var(--surface); width:100%; max-width:420px; border-radius:20px;
+    box-shadow:var(--shadow); overflow:hidden; border:1px solid var(--line);
+  }
+  .card-hero{
+    position:relative; padding:30px 28px 22px;
+    background:linear-gradient(160deg,#0a93b3,#066a82);
+    color:#eafafe; overflow:hidden;
+  }
+  .card-hero .brandname{color:#fff}
+  .card-hero .brandname b{color:#bdeefb}
+  .card-hero p{margin:14px 0 0; font-size:13.5px; color:#cdeef6; max-width:30ch}
+  .wave{position:absolute; left:0; right:0; bottom:-1px; height:26px; display:block}
+  .card-body{padding:24px 28px 28px}
+
+  label{display:block; font-size:12.5px; font-weight:600; color:var(--muted); margin:16px 0 6px; text-transform:none}
+  .field{
+    width:100%; padding:12px 13px; border:1px solid var(--line); border-radius:11px;
+    background:#fbfdfe; color:var(--ink); transition:border-color .15s,box-shadow .15s;
+  }
+  .field:focus{outline:none; border-color:var(--primary); box-shadow:0 0 0 3px var(--primary-soft)}
+  .hint{font-size:11.5px; color:var(--muted); margin-top:5px}
+  .btn{
+    width:100%; margin-top:22px; padding:13px; border:none; border-radius:11px;
+    background:var(--primary-deep); color:#fff; font-weight:600; font-size:15px;
+    transition:background .15s, transform .05s;
+  }
+  .btn:hover{background:#055a6f} .btn:active{transform:translateY(1px)}
+  .btn:disabled{opacity:.55; cursor:default}
+  .btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line);margin-top:10px}
+  .btn-ghost:hover{background:#f3f9fb;color:var(--ink)}
+
+  .note{margin-top:16px;padding:12px 14px;border-radius:11px;font-size:13.5px;display:none}
+  .note.err{display:block;background:#fcefee;border:1px solid #f0cfca;color:#9e3022}
+  .note.ok{display:block;background:#e9f7f0;border:1px solid #bfe6d4;color:#0f6e4f}
+
+  /* ---- App shell ---- */
+  .topbar{
+    background:var(--surface); border-bottom:1px solid var(--line);
+    padding:13px 18px; display:flex; align-items:center; justify-content:space-between;
+    position:sticky; top:0; z-index:5;
+  }
+  .who{display:flex;align-items:center;gap:11px}
+  .who .name{font-weight:600;font-size:14px;line-height:1.2}
+  .who .role{font-size:11px;color:var(--primary-deep);background:var(--primary-soft);
+    padding:2px 8px;border-radius:20px;font-weight:600;display:inline-block;margin-top:2px}
+  .logout{background:none;border:1px solid var(--line);color:var(--muted);
+    padding:8px 12px;border-radius:9px;font-size:13px}
+  .logout:hover{background:#f3f9fb;color:var(--ink)}
+
+  .wrap{max-width:880px;margin:0 auto;padding:20px 16px 60px}
+  .greet{margin:8px 2px 18px}
+  .greet h2{margin:0;font-size:22px}
+  .greet p{margin:4px 0 0;color:var(--muted);font-size:14px}
+
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px;position:relative;overflow:hidden}
+  .stat .k{font-size:12.5px;color:var(--muted);font-weight:500}
+  .stat .v{font-family:'Sora';font-weight:700;font-size:30px;margin-top:6px;line-height:1}
+  .stat::after{content:"";position:absolute;right:-10px;bottom:-14px;width:64px;height:64px;
+    background:radial-gradient(circle at 30% 30%,var(--primary-soft),transparent 70%);opacity:.8}
+
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  .panel-head{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+  .panel-head h3{margin:0;font-size:16px}
+  .panel-head .count{font-size:12.5px;color:var(--muted)}
+
+  .add{padding:16px 18px;border-bottom:1px solid var(--line);background:#fbfdfe;display:none}
+  .add.show{display:block}
+  .add .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .add label{margin-top:10px}
+
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:left;padding:12px 18px;font-size:14px;border-bottom:1px solid var(--line)}
+  th{font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600;background:#fafdfe}
+  tr:last-child td{border-bottom:none}
+  .badge{font-size:11px;padding:2px 8px;border-radius:20px;font-weight:600}
+  .badge.ind{background:#eef4f6;color:#456b76}
+  .badge.biz{background:#fff2dd;color:#9a6a17}
+  .debt{font-weight:600}
+  .debt.has{color:var(--err)} .debt.zero{color:var(--muted);font-weight:400}
+  .empty{padding:34px 18px;text-align:center;color:var(--muted)}
+  .empty .big{font-size:15px;color:var(--ink);font-weight:600;margin-bottom:4px}
+
+  .pill{font-size:12px;color:var(--primary-deep);background:var(--primary-soft);
+    border:none;padding:8px 13px;border-radius:9px;font-weight:600}
+  .pill:hover{background:#c4e7ef}
+
+  @media (max-width:560px){
+    .stats{grid-template-columns:1fr}
+    .add .row{grid-template-columns:1fr}
+    th.hide-sm,td.hide-sm{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ============ CONFIG SCREEN ============ -->
+<div id="screen-config" class="center hidden">
+  <div class="card">
+    <div class="card-hero">
+      <div class="brand">
+        <svg class="drop" viewBox="0 0 32 32" fill="none"><path d="M16 3C16 3 6 14 6 21a10 10 0 0 0 20 0C26 14 16 3 16 3Z" fill="#bdeefb"/><path d="M11 20a5 5 0 0 0 5 5" stroke="#066a82" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="brandname">19L <b>Suv</b></span>
+      </div>
+      <p>Ilovani bazangizga ulang. Bu bir martalik sozlama.</p>
+      <svg class="wave" viewBox="0 0 420 26" preserveAspectRatio="none"><path d="M0 14 Q 105 0 210 14 T 420 14 V26 H0 Z" fill="#fff"/></svg>
+    </div>
+    <div class="card-body">
+      <label>Project URL</label>
+      <input id="cfg-url" class="field" placeholder="https://xxxxx.supabase.co">
+      <div class="hint">Supabase → Settings → API → "Project URL"</div>
+      <label>Anon / Publishable key</label>
+      <input id="cfg-key" class="field" placeholder="eyJ... yoki sb_publishable_...">
+      <div class="hint">Supabase → Settings → API → "anon public" kaliti</div>
+      <button class="btn" onclick="saveConfig()">Ulash</button>
+      <div id="cfg-note" class="note"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ LOGIN SCREEN ============ -->
+<div id="screen-login" class="center hidden">
+  <div class="card">
+    <div class="card-hero">
+      <div class="brand">
+        <svg class="drop" viewBox="0 0 32 32" fill="none"><path d="M16 3C16 3 6 14 6 21a10 10 0 0 0 20 0C26 14 16 3 16 3Z" fill="#bdeefb"/><path d="M11 20a5 5 0 0 0 5 5" stroke="#066a82" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="brandname">19L <b>Suv</b></span>
+      </div>
+      <p>Boshqaruv paneliga kirish.</p>
+      <svg class="wave" viewBox="0 0 420 26" preserveAspectRatio="none"><path d="M0 14 Q 105 0 210 14 T 420 14 V26 H0 Z" fill="#fff"/></svg>
+    </div>
+    <div class="card-body">
+      <label>Email</label>
+      <input id="lg-email" class="field" autocomplete="username" placeholder="telefon@staff.19lsuv.uz">
+      <label>Parol</label>
+      <input id="lg-pass" class="field" type="password" autocomplete="current-password" placeholder="Parolingiz">
+      <button class="btn" id="lg-btn" onclick="doLogin()">Kirish</button>
+      <button class="btn-ghost btn" onclick="resetConfig()">Boshqa bazaga ulanish</button>
+      <div id="lg-note" class="note"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="screen-app" class="hidden">
+  <div class="topbar">
+    <div class="brand">
+      <svg class="drop" viewBox="0 0 32 32" fill="none"><path d="M16 3C16 3 6 14 6 21a10 10 0 0 0 20 0C26 14 16 3 16 3Z" fill="#9fd9e8"/><path d="M11 20a5 5 0 0 0 5 5" stroke="#066a82" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="brandname">19L <b>Suv</b></span>
+    </div>
+    <div class="who">
+      <div>
+        <div class="name" id="app-name">—</div>
+        <span class="role" id="app-role">—</span>
+      </div>
+      <button class="logout" onclick="doLogout()">Chiqish</button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="greet">
+      <h2 id="greet-h">Salom 👋</h2>
+      <p>Boshqaruv paneli. Bu yerda mijozlaringizni ko'rasiz va qo'shasiz.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="k">Mijozlar</div><div class="v num" id="stat-cust">—</div></div>
+      <div class="stat"><div class="k">Faol buyurtmalar</div><div class="v num" id="stat-ord">—</div></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <div><h3>Mijozlar</h3><div class="count" id="cust-count"></div></div>
+        <button class="pill" onclick="toggleAdd()">+ Mijoz qo'shish</button>
+      </div>
+
+      <div class="add" id="add-box">
+        <div class="row">
+          <div>
+            <label>To'liq ism</label>
+            <input id="c-name" class="field" placeholder="Masalan: Akmal Yusupov">
+          </div>
+          <div>
+            <label>Telefon (faqat raqam)</label>
+            <input id="c-phone" class="field" placeholder="998901234567">
+          </div>
+        </div>
+        <label>Mijoz turi</label>
+        <select id="c-type" class="field">
+          <option value="individual">Jismoniy shaxs</option>
+          <option value="business">Biznes</option>
+        </select>
+        <button class="btn" id="c-btn" onclick="addCustomer()">Saqlash</button>
+        <div id="c-note" class="note"></div>
+      </div>
+
+      <div id="cust-area"></div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+
+let sb = null;
+let me = { id:null, name:'', role:'' };
+
+const $ = (id)=>document.getElementById(id);
+const show = (id)=>{ ['screen-config','screen-login','screen-app'].forEach(s=>$(s).classList.add('hidden')); $(id).classList.remove('hidden'); };
+function note(id, msg, kind){ const n=$(id); n.className='note '+kind; n.textContent=msg; }
+
+window.saveConfig = ()=>{
+  const url=$('cfg-url').value.trim().replace(/\/+$/,'');
+  const key=$('cfg-key').value.trim();
+  if(!url || !key){ note('cfg-note','Ikkala maydonni ham to\'ldiring.','err'); return; }
+  if(!/^https:\/\/.+\.supabase\.co$/.test(url)){ note('cfg-note','Project URL "https://...supabase.co" ko\'rinishida bo\'lishi kerak.','err'); return; }
+  localStorage.setItem('sb_url',url); localStorage.setItem('sb_key',key);
+  init();
+};
+window.resetConfig = ()=>{ localStorage.removeItem('sb_url'); localStorage.removeItem('sb_key'); show('screen-config'); };
+
+window.doLogin = async ()=>{
+  const email=$('lg-email').value.trim(); const password=$('lg-pass').value;
+  if(!email||!password){ note('lg-note','Email va parolni kiriting.','err'); return; }
+  const btn=$('lg-btn'); btn.disabled=true; btn.textContent='Kirilmoqda...';
+  const { error } = await sb.auth.signInWithPassword({ email, password });
+  btn.disabled=false; btn.textContent='Kirish';
+  if(error){
+    let m = error.message;
+    if(/invalid login/i.test(m)) m='Email yoki parol noto\'g\'ri.';
+    note('lg-note', m, 'err'); return;
+  }
+  await enterApp();
+};
+
+window.doLogout = async ()=>{ await sb.auth.signOut(); show('screen-login'); };
+window.toggleAdd = ()=> $('add-box').classList.toggle('show');
+
+window.addCustomer = async ()=>{
+  const name=$('c-name').value.trim();
+  const phone=$('c-phone').value.trim();
+  const type=$('c-type').value;
+  if(!name){ note('c-note','Ismni kiriting.','err'); return; }
+  if(!/^[0-9]{7,15}$/.test(phone)){ note('c-note','Telefon faqat raqamlardan, 7-15 ta bo\'lishi kerak.','err'); return; }
+  const btn=$('c-btn'); btn.disabled=true; btn.textContent='Saqlanmoqda...';
+  const { error } = await sb.from('customers').insert({
+    full_name:name, phone, customer_type:type, created_by: me.id
+  });
+  btn.disabled=false; btn.textContent='Saqlash';
+  if(error){
+    let m=error.message;
+    if(/duplicate|unique/i.test(m)) m='Bu telefon raqam allaqachon ro\'yxatda bor.';
+    note('c-note', m, 'err'); return;
+  }
+  note('c-note','Mijoz qo\'shildi ✓','ok');
+  $('c-name').value=''; $('c-phone').value='';
+  await loadCustomers(); await loadStats();
+};
+
+async function enterApp(){
+  const { data:{ session } } = await sb.auth.getSession();
+  if(!session){ show('screen-login'); return; }
+  me.id = session.user.id;
+  // app_role JWT'dan (hook isboti)
+  try{
+    const c = JSON.parse(decodeURIComponent(atob(session.access_token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')).split('').map(x=>'%'+('00'+x.charCodeAt(0).toString(16)).slice(-2)).join('')));
+    me.role = c.app_role || '—';
+  }catch(e){ me.role='—'; }
+  // profil (ism)
+  const { data:prof } = await sb.from('staff_profiles').select('full_name').eq('id', me.id).maybeSingle();
+  me.name = prof?.full_name || session.user.email;
+  $('app-name').textContent = me.name;
+  $('app-role').textContent = me.role;
+  $('greet-h').textContent = 'Salom, '+me.name.split(' ')[0]+' 👋';
+  show('screen-app');
+  await loadStats(); await loadCustomers();
+}
+
+async function loadStats(){
+  const c = await sb.from('customers').select('*',{count:'exact',head:true}).is('deleted_at',null);
+  $('stat-cust').textContent = c.count ?? 0;
+  const o = await sb.from('orders').select('*',{count:'exact',head:true})
+              .is('deleted_at',null).not('status','in','(delivered,closed,cancelled)');
+  $('stat-ord').textContent = o.error ? '—' : (o.count ?? 0);
+}
+
+async function loadCustomers(){
+  const area=$('cust-area');
+  const { data, error } = await sb.from('customers')
+    .select('full_name, phone, customer_type, current_debt_balance')
+    .is('deleted_at',null).order('created_at',{ascending:false}).limit(50);
+  if(error){ area.innerHTML='<div class="empty">Yuklashda xato: '+error.message+'</div>'; return; }
+  $('cust-count').textContent = (data.length)+' ta ko\'rsatilmoqda';
+  if(!data.length){
+    area.innerHTML='<div class="empty"><div class="big">Hali mijoz yo\'q</div>Yuqoridagi "+ Mijoz qo\'shish" tugmasi bilan birinchisini qo\'shing.</div>';
+    return;
+  }
+  const fmt=(n)=> (Number(n)||0).toLocaleString('ru-RU');
+  let rows = data.map(c=>{
+    const t = c.customer_type==='business'
+      ? '<span class="badge biz">Biznes</span>' : '<span class="badge ind">Jismoniy</span>';
+    const d = Number(c.current_debt_balance)||0;
+    const debt = d>0 ? '<span class="debt has num">'+fmt(d)+' so\'m</span>' : '<span class="debt zero">0</span>';
+    return '<tr><td>'+esc(c.full_name)+'</td><td class="num">'+esc(c.phone)+'</td><td class="hide-sm">'+t+'</td><td>'+debt+'</td></tr>';
+  }).join('');
+  area.innerHTML='<table><thead><tr><th>Ism</th><th>Telefon</th><th class="hide-sm">Tur</th><th>Qarz</th></tr></thead><tbody>'+rows+'</tbody></table>';
+}
+
+function esc(s){ return String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m])); }
+
+async function init(){
+  const url=localStorage.getItem('sb_url'); const key=localStorage.getItem('sb_key');
+  if(!url||!key){ show('screen-config'); return; }
+  sb = createClient(url, key);
+  const { data:{ session } } = await sb.auth.getSession();
+  if(session){ await enterApp(); } else { show('screen-login'); }
+}
+init();
+</script>
+</body>
+</html>
