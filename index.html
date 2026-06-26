@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>19L Suv — Boshqaruv</title>
+<title>19L Suv — Boshqaruv tizimi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -11,88 +11,142 @@
   :root{
     --bg:#eaf3f5; --surface:#ffffff; --ink:#0b2a33; --muted:#5e7d87;
     --line:#d8e6ea; --primary:#0892b0; --primary-deep:#066a82; --primary-soft:#d5eef4;
-    --ok:#15926b; --warn:#c9842b; --err:#c44536;
+    --ok:#15926b; --ok-soft:#e9f7f0; --warn:#c9842b; --warn-soft:#fff4e2; --err:#c44536; --err-soft:#fcefee;
     --shadow:0 10px 40px -18px rgba(6,80,100,.35);
   }
   *{box-sizing:border-box}
-  body{margin:0; background:var(--bg); color:var(--ink); font-family:'Inter',system-ui,sans-serif; font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased}
-  h1,h2,h3,.brandname{font-family:'Sora',sans-serif; letter-spacing:-.01em}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,.brandname{font-family:'Sora',sans-serif;letter-spacing:-.01em}
   .num{font-variant-numeric:tabular-nums}
-  button{font-family:inherit; cursor:pointer}
-  input,select{font-family:inherit; font-size:15px}
+  button{font-family:inherit;cursor:pointer}
+  input,select{font-family:inherit;font-size:15px}
   .hidden{display:none !important}
-  .drop{width:34px;height:34px;flex:none}
-  .brand{display:flex; align-items:center; gap:10px}
-  .brandname{font-weight:700; font-size:18px}
+  .drop{width:32px;height:32px;flex:none}
+  .brand{display:flex;align-items:center;gap:10px}
+  .brandname{font-weight:700;font-size:18px}
   .brandname b{color:var(--primary-deep)}
 
-  .center{min-height:100dvh; display:flex; align-items:center; justify-content:center; padding:22px}
-  .card{background:var(--surface); width:100%; max-width:420px; border-radius:20px; box-shadow:var(--shadow); overflow:hidden; border:1px solid var(--line)}
-  .card-hero{position:relative; padding:30px 28px 22px; background:linear-gradient(160deg,#0a93b3,#066a82); color:#eafafe; overflow:hidden}
-  .card-hero .brandname{color:#fff} .card-hero .brandname b{color:#bdeefb}
-  .card-hero p{margin:14px 0 0; font-size:13.5px; color:#cdeef6; max-width:30ch}
-  .wave{position:absolute; left:0; right:0; bottom:-1px; height:26px; display:block}
+  /* centered (config/login) */
+  .center{min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:22px}
+  .card{background:var(--surface);width:100%;max-width:420px;border-radius:20px;box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--line)}
+  .card-hero{position:relative;padding:30px 28px 22px;background:linear-gradient(160deg,#0a93b3,#066a82);color:#eafafe;overflow:hidden}
+  .card-hero .brandname{color:#fff}.card-hero .brandname b{color:#bdeefb}
+  .card-hero p{margin:14px 0 0;font-size:13.5px;color:#cdeef6;max-width:30ch}
+  .wave{position:absolute;left:0;right:0;bottom:-1px;height:26px;display:block}
   .card-body{padding:24px 28px 28px}
 
-  label{display:block; font-size:12.5px; font-weight:600; color:var(--muted); margin:16px 0 6px}
-  .field{width:100%; padding:12px 13px; border:1px solid var(--line); border-radius:11px; background:#fbfdfe; color:var(--ink); transition:border-color .15s,box-shadow .15s}
-  .field:focus{outline:none; border-color:var(--primary); box-shadow:0 0 0 3px var(--primary-soft)}
-  .hint{font-size:11.5px; color:var(--muted); margin-top:5px}
-  .btn{width:100%; margin-top:22px; padding:13px; border:none; border-radius:11px; background:var(--primary-deep); color:#fff; font-weight:600; font-size:15px; transition:background .15s, transform .05s}
-  .btn:hover{background:#055a6f} .btn:active{transform:translateY(1px)} .btn:disabled{opacity:.55; cursor:default}
+  label{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin:14px 0 6px}
+  .field{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:#fbfdfe;color:var(--ink);transition:border-color .15s,box-shadow .15s}
+  .field:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-soft)}
+  .hint{font-size:11.5px;color:var(--muted);margin-top:5px}
+  .btn{width:100%;margin-top:20px;padding:13px;border:none;border-radius:11px;background:var(--primary-deep);color:#fff;font-weight:600;font-size:15px;transition:background .15s,transform .05s}
+  .btn:hover{background:#055a6f}.btn:active{transform:translateY(1px)}.btn:disabled{opacity:.55;cursor:default}
   .btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line);margin-top:10px}
   .btn-ghost:hover{background:#f3f9fb;color:var(--ink)}
-  .note{margin-top:16px;padding:12px 14px;border-radius:11px;font-size:13.5px;display:none}
-  .note.err{display:block;background:#fcefee;border:1px solid #f0cfca;color:#9e3022}
-  .note.ok{display:block;background:#e9f7f0;border:1px solid #bfe6d4;color:#0f6e4f}
+  .note{margin-top:14px;padding:11px 14px;border-radius:11px;font-size:13.5px;display:none}
+  .note.err{display:block;background:var(--err-soft);border:1px solid #f0cfca;color:#9e3022}
+  .note.ok{display:block;background:var(--ok-soft);border:1px solid #bfe6d4;color:#0f6e4f}
 
-  .topbar{background:var(--surface); border-bottom:1px solid var(--line); padding:13px 18px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:5}
+  /* app shell */
+  .topbar{background:var(--surface);border-bottom:1px solid var(--line);padding:11px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:20}
   .who{display:flex;align-items:center;gap:11px}
-  .who .name{font-weight:600;font-size:14px;line-height:1.2}
+  .who .name{font-weight:600;font-size:13.5px;line-height:1.2}
   .who .role{font-size:11px;color:var(--primary-deep);background:var(--primary-soft);padding:2px 8px;border-radius:20px;font-weight:600;display:inline-block;margin-top:2px}
-  .logout{background:none;border:1px solid var(--line);color:var(--muted);padding:8px 12px;border-radius:9px;font-size:13px}
+  .logout{background:none;border:1px solid var(--line);color:var(--muted);padding:7px 11px;border-radius:9px;font-size:13px}
   .logout:hover{background:#f3f9fb;color:var(--ink)}
 
-  .tabs{max-width:920px;margin:0 auto;padding:16px 16px 0;display:flex;gap:8px}
-  .tab{padding:10px 18px;border:1px solid var(--line);background:var(--surface);border-radius:11px 11px 0 0;font-weight:600;font-size:14px;color:var(--muted);border-bottom:none}
-  .tab.active{color:var(--primary-deep);background:var(--surface);box-shadow:inset 0 -3px 0 var(--primary)}
+  .nav{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:53px;z-index:15;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .nav-inner{display:flex;gap:2px;max-width:1100px;margin:0 auto;padding:0 8px;min-width:max-content}
+  .nav button{background:none;border:none;padding:13px 15px;font-size:13.5px;font-weight:600;color:var(--muted);border-bottom:3px solid transparent;white-space:nowrap}
+  .nav button.active{color:var(--primary-deep);border-bottom-color:var(--primary)}
 
-  .wrap{max-width:920px;margin:0 auto;padding:18px 16px 60px}
-  .greet{margin:4px 2px 18px}
-  .greet h2{margin:0;font-size:22px}
-  .greet p{margin:4px 0 0;color:var(--muted);font-size:14px}
+  .wrap{max-width:1100px;margin:0 auto;padding:18px 16px 70px}
+  .page-title{margin:2px 2px 16px}
+  .page-title h2{margin:0;font-size:21px}
+  .page-title p{margin:3px 0 0;color:var(--muted);font-size:13.5px}
 
-  .stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px}
-  .stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px;position:relative;overflow:hidden}
-  .stat .k{font-size:12.5px;color:var(--muted);font-weight:500}
-  .stat .v{font-family:'Sora';font-weight:700;font-size:30px;margin-top:6px;line-height:1}
-  .stat::after{content:"";position:absolute;right:-10px;bottom:-14px;width:64px;height:64px;background:radial-gradient(circle at 30% 30%,var(--primary-soft),transparent 70%);opacity:.8}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:15px 16px;position:relative;overflow:hidden}
+  .stat .k{font-size:12px;color:var(--muted);font-weight:500}
+  .stat .v{font-family:'Sora';font-weight:700;font-size:25px;margin-top:5px;line-height:1.1}
+  .stat .v.sm{font-size:19px}
+  .stat::after{content:"";position:absolute;right:-10px;bottom:-14px;width:56px;height:56px;background:radial-gradient(circle at 30% 30%,var(--primary-soft),transparent 70%);opacity:.8}
 
-  .panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-bottom:18px}
-  .panel-head{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-bottom:16px}
+  .panel-head{padding:15px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
   .panel-head h3{margin:0;font-size:16px}
   .panel-head .count{font-size:12.5px;color:var(--muted)}
+  .panel-pad{padding:16px 18px}
   .form-box{padding:16px 18px;border-bottom:1px solid var(--line);background:#fbfdfe;display:none}
   .form-box.show{display:block}
-  .form-box label{margin-top:10px}
+  .form-box label:first-child{margin-top:0}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 
   table{width:100%;border-collapse:collapse}
-  th,td{text-align:left;padding:12px 18px;font-size:14px;border-bottom:1px solid var(--line);vertical-align:top}
-  th{font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600;background:#fafdfe}
+  th,td{text-align:left;padding:11px 16px;font-size:14px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600;background:#fafdfe}
   tr:last-child td{border-bottom:none}
-  .badge{font-size:11px;padding:2px 8px;border-radius:20px;font-weight:600}
-  .badge.ind{background:#eef4f6;color:#456b76} .badge.biz{background:#fff2dd;color:#9a6a17}
-  .badge.st{background:var(--primary-soft);color:var(--primary-deep)}
   .sub{color:var(--muted);font-size:12.5px;margin-top:3px}
-  .debt.has{color:var(--err);font-weight:600} .debt.zero{color:var(--muted)}
-  .empty{padding:34px 18px;text-align:center;color:var(--muted)}
+  .badge{font-size:11px;padding:2px 8px;border-radius:20px;font-weight:600;display:inline-block;white-space:nowrap}
+  .badge.ind{background:#eef4f6;color:#456b76}.badge.biz{background:var(--warn-soft);color:#9a6a17}
+  .badge.st-new{background:#e7eef0;color:#4a6b74}
+  .badge.st-confirmed{background:var(--primary-soft);color:var(--primary-deep)}
+  .badge.st-assigned,.badge.st-on_the_way{background:#e6eefb;color:#2a4d8f}
+  .badge.st-delivered,.badge.st-closed{background:var(--ok-soft);color:#0f6e4f}
+  .badge.st-not_home{background:var(--warn-soft);color:#9a6a17}
+  .badge.st-cancelled{background:var(--err-soft);color:#9e3022}
+  .debt.has{color:var(--err);font-weight:600}.debt.zero{color:var(--muted)}
+  .empty{padding:30px 18px;text-align:center;color:var(--muted)}
   .empty .big{font-size:15px;color:var(--ink);font-weight:600;margin-bottom:4px}
   .pill{font-size:12px;color:var(--primary-deep);background:var(--primary-soft);border:none;padding:8px 13px;border-radius:9px;font-weight:600}
   .pill:hover{background:#c4e7ef}
-  .total-line{margin-top:14px;padding:12px 14px;background:var(--primary-soft);border-radius:11px;font-weight:600;display:flex;justify-content:space-between;color:var(--primary-deep)}
+  .total-line{margin-top:14px;padding:12px 14px;background:var(--primary-soft);border-radius:11px;font-weight:600;display:flex;justify-content:space-between;color:var(--primary-deep);font-size:16px}
 
-  @media (max-width:560px){.stats{grid-template-columns:1fr}.row2{grid-template-columns:1fr}th.hide-sm,td.hide-sm{display:none}}
+  /* choice buttons (product/payment) */
+  .choices{display:flex;gap:8px;flex-wrap:wrap}
+  .choice{flex:1;min-width:120px;padding:11px;border:1.5px solid var(--line);border-radius:11px;background:#fff;font-weight:600;font-size:13.5px;color:var(--ink);text-align:center}
+  .choice small{display:block;color:var(--muted);font-weight:500;margin-top:2px}
+  .choice.on{border-color:var(--primary);background:var(--primary-soft);color:var(--primary-deep)}
+  .choice.on small{color:var(--primary-deep)}
+
+  /* quantity stepper */
+  .stepper{display:flex;align-items:center;gap:0;border:1px solid var(--line);border-radius:11px;overflow:hidden;width:fit-content}
+  .stepper button{width:42px;height:44px;border:none;background:#f3f9fb;font-size:20px;color:var(--primary-deep);font-weight:700}
+  .stepper button:hover{background:var(--primary-soft)}
+  .stepper input{width:56px;height:44px;border:none;text-align:center;font-size:16px;font-weight:600;background:#fff}
+
+  /* customer search dropdown */
+  .search-wrap{position:relative}
+  .search-list{position:absolute;left:0;right:0;top:100%;background:#fff;border:1px solid var(--line);border-radius:11px;margin-top:4px;max-height:230px;overflow-y:auto;z-index:30;box-shadow:var(--shadow);display:none}
+  .search-list.show{display:block}
+  .search-item{padding:10px 13px;cursor:pointer;border-bottom:1px solid var(--line);font-size:14px}
+  .search-item:last-child{border-bottom:none}
+  .search-item:hover{background:var(--primary-soft)}
+  .search-item .sub{margin-top:1px}
+  .picked{margin-top:8px;padding:10px 13px;background:var(--ok-soft);border:1px solid #bfe6d4;border-radius:11px;font-size:14px;display:flex;justify-content:space-between;align-items:center}
+  .picked b{font-weight:600}
+  .picked button{background:none;border:none;color:var(--err);font-weight:600;font-size:13px}
+
+  .act{font-size:12px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:600;margin:2px 2px 0 0}
+  .act:hover{background:#f3f9fb}
+  .act.go{border-color:var(--primary);color:var(--primary-deep);background:var(--primary-soft)}
+  .act.ok{border-color:#bfe6d4;color:#0f6e4f;background:var(--ok-soft)}
+  .inline-sel{font-size:12px;padding:6px 8px;border-radius:8px;border:1px solid var(--line);background:#fff;margin-top:4px}
+
+  /* modal */
+  .modal-bg{position:fixed;inset:0;background:rgba(8,30,40,.45);z-index:40;display:none;align-items:flex-start;justify-content:center;padding:30px 14px;overflow-y:auto}
+  .modal-bg.show{display:flex}
+  .modal{background:#fff;width:100%;max-width:540px;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+  .modal-head{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .modal-head h3{margin:0;font-size:17px}
+  .modal-head button{background:none;border:none;font-size:22px;color:var(--muted);line-height:1}
+  .modal-body{padding:18px 20px;max-height:70vh;overflow-y:auto}
+
+  .infobox{padding:14px 16px;background:var(--warn-soft);border:1px solid #f0ddb8;border-radius:12px;font-size:13.5px;color:#7a5614}
+
+  @media (max-width:760px){.stats{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.row2,.row3{grid-template-columns:1fr}th.hide-sm,td.hide-sm{display:none}}
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -103,14 +157,13 @@
   <div class="card">
     <div class="card-hero">
       <div class="brand"><svg class="drop" viewBox="0 0 32 32" fill="none"><path d="M16 3C16 3 6 14 6 21a10 10 0 0 0 20 0C26 14 16 3 16 3Z" fill="#bdeefb"/><path d="M11 20a5 5 0 0 0 5 5" stroke="#066a82" stroke-width="2" stroke-linecap="round"/></svg><span class="brandname">19L <b>Suv</b></span></div>
-      <p>Ilovani bazangizga ulang. Bu bir martalik sozlama.</p>
+      <p>Ilovani bazangizga ulang. Bir martalik sozlama.</p>
       <svg class="wave" viewBox="0 0 420 26" preserveAspectRatio="none"><path d="M0 14 Q 105 0 210 14 T 420 14 V26 H0 Z" fill="#fff"/></svg>
     </div>
     <div class="card-body">
       <label>Project URL</label><input id="cfg-url" class="field" placeholder="https://xxxxx.supabase.co">
       <div class="hint">Supabase → Settings → API → "Project URL"</div>
       <label>Anon / Publishable key</label><input id="cfg-key" class="field" placeholder="eyJ... yoki sb_publishable_...">
-      <div class="hint">Supabase → Settings → API → "anon public" kaliti</div>
       <button class="btn" onclick="saveConfig()">Ulash</button>
       <div id="cfg-note" class="note"></div>
     </div>
@@ -122,7 +175,7 @@
   <div class="card">
     <div class="card-hero">
       <div class="brand"><svg class="drop" viewBox="0 0 32 32" fill="none"><path d="M16 3C16 3 6 14 6 21a10 10 0 0 0 20 0C26 14 16 3 16 3Z" fill="#bdeefb"/><path d="M11 20a5 5 0 0 0 5 5" stroke="#066a82" stroke-width="2" stroke-linecap="round"/></svg><span class="brandname">19L <b>Suv</b></span></div>
-      <p>Boshqaruv paneliga kirish.</p>
+      <p>Boshqaruv tizimiga kirish.</p>
       <svg class="wave" viewBox="0 0 420 26" preserveAspectRatio="none"><path d="M0 14 Q 105 0 210 14 T 420 14 V26 H0 Z" fill="#fff"/></svg>
     </div>
     <div class="card-body">
@@ -139,21 +192,75 @@
 <div id="screen-app" class="hidden">
   <div class="topbar">
     <div class="brand"><svg class="drop" viewBox="0 0 32 32" fill="none"><path d="M16 3C16 3 6 14 6 21a10 10 0 0 0 20 0C26 14 16 3 16 3Z" fill="#9fd9e8"/><path d="M11 20a5 5 0 0 0 5 5" stroke="#066a82" stroke-width="2" stroke-linecap="round"/></svg><span class="brandname">19L <b>Suv</b></span></div>
-    <div class="who"><div><div class="name" id="app-name">—</div><span class="role" id="app-role">—</span></div><button class="logout" onclick="doLogout()">Chiqish</button></div>
+    <div class="who"><div style="text-align:right"><div class="name" id="app-name">—</div><span class="role" id="app-role">—</span></div><button class="logout" onclick="doLogout()">Chiqish</button></div>
   </div>
+  <div class="nav"><div class="nav-inner" id="nav">
+    <button data-s="dash" class="active" onclick="go('dash')">Bosh sahifa</button>
+    <button data-s="orders" onclick="go('orders')">Buyurtmalar</button>
+    <button data-s="customers" onclick="go('customers')">Mijozlar</button>
+    <button data-s="delivery" onclick="go('delivery')">Yetkazish</button>
+    <button data-s="debts" onclick="go('debts')">Qarz / To'lov</button>
+    <button data-s="staff" onclick="go('staff')">Xodimlar</button>
+    <button data-s="reports" onclick="go('reports')">Hisobot</button>
+  </div></div>
 
-  <div class="tabs">
-    <button class="tab active" id="tab-cust" onclick="switchTab('cust')">Mijozlar</button>
-    <button class="tab" id="tab-ord" onclick="switchTab('ord')">Buyurtmalar</button>
-  </div>
-
-  <!-- TAB: CUSTOMERS -->
-  <div class="wrap" id="view-cust">
-    <div class="greet"><h2 id="greet-h">Salom 👋</h2><p>Mijozlaringizni ko'rasiz va qo'shasiz.</p></div>
+  <!-- DASHBOARD -->
+  <div class="wrap" id="page-dash">
+    <div class="page-title"><h2 id="greet-h">Salom 👋</h2><p>Bugungi holat va asosiy ko'rsatkichlar.</p></div>
     <div class="stats">
-      <div class="stat"><div class="k">Mijozlar</div><div class="v num" id="stat-cust">—</div></div>
-      <div class="stat"><div class="k">Faol buyurtmalar</div><div class="v num" id="stat-ord">—</div></div>
+      <div class="stat"><div class="k">Bugungi buyurtmalar</div><div class="v num" id="d-today">—</div></div>
+      <div class="stat"><div class="k">Faol buyurtmalar</div><div class="v num" id="d-active">—</div></div>
+      <div class="stat"><div class="k">Qarzdorlar</div><div class="v num" id="d-debtors">—</div></div>
+      <div class="stat"><div class="k">Jami qarz</div><div class="v sm num" id="d-debt">—</div></div>
     </div>
+    <div class="panel">
+      <div class="panel-head"><h3>Bugun yetkazilgan</h3></div>
+      <div class="panel-pad"><div style="display:flex;gap:24px;flex-wrap:wrap"><div><div class="sub">Yetkazilgan buyurtma</div><div style="font-family:Sora;font-weight:700;font-size:22px" class="num" id="d-deliv">—</div></div><div><div class="sub">Bugungi tushum</div><div style="font-family:Sora;font-weight:700;font-size:22px" class="num" id="d-revenue">—</div></div></div></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>So'nggi buyurtmalar</h3><button class="pill" onclick="go('orders')">Hammasi</button></div>
+      <div id="d-recent"></div>
+    </div>
+  </div>
+
+  <!-- ORDERS -->
+  <div class="wrap hidden" id="page-orders">
+    <div class="page-title"><h2>Buyurtmalar</h2><p>Tezkor buyurtma oling va boshqaring.</p></div>
+    <div class="panel">
+      <div class="panel-head"><h3>⚡ Tezkor buyurtma</h3></div>
+      <div class="form-box show" id="ord-form">
+        <label>Mijoz</label>
+        <div class="search-wrap">
+          <input id="o-search" class="field" placeholder="Ism yoki telefon bo'yicha qidiring..." oninput="custSearch(this.value)" onfocus="custSearch(this.value)" autocomplete="off">
+          <div class="search-list" id="o-search-list"></div>
+        </div>
+        <div id="o-picked"></div>
+        <div id="o-addr-wrap"></div>
+        <label>Mahsulot</label>
+        <div class="choices" id="o-products"></div>
+        <label>Soni</label>
+        <div class="stepper"><button type="button" onclick="qtyStep(-1)">−</button><input id="o-qty" class="num" value="1" readonly><button type="button" onclick="qtyStep(1)">+</button></div>
+        <label>To'lov turi</label>
+        <div class="choices" id="o-pays">
+          <button type="button" class="choice on" data-pay="cash" onclick="pickPay('cash')">Naqd</button>
+          <button type="button" class="choice" data-pay="click" onclick="pickPay('click')">Click</button>
+          <button type="button" class="choice" data-pay="payme" onclick="pickPay('payme')">Payme</button>
+          <button type="button" class="choice" data-pay="debt" onclick="pickPay('debt')">Qarz</button>
+        </div>
+        <div class="total-line"><span>Jami</span><span class="num" id="o-total">0 so'm</span></div>
+        <button class="btn" id="o-btn" onclick="addOrder()">Buyurtmani saqlash</button>
+        <div id="o-note" class="note"></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><div><h3>Buyurtmalar ro'yxati</h3><div class="count" id="ord-count"></div></div></div>
+      <div id="ord-area"></div>
+    </div>
+  </div>
+
+  <!-- CUSTOMERS -->
+  <div class="wrap hidden" id="page-customers">
+    <div class="page-title"><h2>Mijozlar</h2><p>Qidiring, qo'shing va boshqaring.</p></div>
     <div class="panel">
       <div class="panel-head"><div><h3>Mijozlar</h3><div class="count" id="cust-count"></div></div><button class="pill" onclick="toggleBox('add-cust')">+ Mijoz qo'shish</button></div>
       <div class="form-box" id="add-cust">
@@ -164,52 +271,88 @@
         <label>Mijoz turi</label>
         <select id="c-type" class="field"><option value="individual">Jismoniy shaxs</option><option value="business">Biznes</option></select>
         <label>Manzil (yetkazib berish joyi)</label>
-        <input id="c-addr" class="field" placeholder="Masalan: Bunyodkor ko'chasi 12, 5-uy">
+        <input id="c-addr" class="field" placeholder="Bunyodkor ko'chasi 12, 5-uy">
         <label>Mo'ljal (ixtiyoriy)</label>
-        <input id="c-land" class="field" placeholder="Masalan: Korzinka yonida">
-        <div class="hint">Manzil buyurtma yetkazish uchun kerak. Hozir kiritmasangiz, keyin qo'shsa bo'ladi.</div>
+        <input id="c-land" class="field" placeholder="Korzinka yonida">
         <button class="btn" id="c-btn" onclick="addCustomer()">Saqlash</button>
         <div id="c-note" class="note"></div>
       </div>
+      <div class="panel-pad" style="border-bottom:1px solid var(--line)"><input id="cust-search" class="field" placeholder="🔍 Ism yoki telefon bo'yicha qidirish..." oninput="renderCustomers()"></div>
       <div id="cust-area"></div>
     </div>
   </div>
 
-  <!-- TAB: ORDERS -->
-  <div class="wrap hidden" id="view-ord">
-    <div class="greet"><h2>Buyurtmalar</h2><p>Yangi buyurtma oling va ro'yxatni ko'ring.</p></div>
+  <!-- DELIVERY -->
+  <div class="wrap hidden" id="page-delivery">
+    <div class="page-title"><h2>Yetkazish</h2><p>Haydovchi biriktiring va yetkazishni belgilang.</p></div>
     <div class="panel">
-      <div class="panel-head"><div><h3>Buyurtmalar</h3><div class="count" id="ord-count"></div></div><button class="pill" onclick="toggleBox('add-ord')">+ Yangi buyurtma</button></div>
-      <div class="form-box" id="add-ord">
-        <label>Mijoz</label>
-        <select id="o-cust" class="field" onchange="onCustChange()"><option value="">— mijozni tanlang —</option></select>
-        <div id="o-addr-wrap"></div>
-        <div class="row2">
-          <div><label>Mahsulot</label><select id="o-prod" class="field" onchange="calcTotal()"></select></div>
-          <div><label>Soni</label><input id="o-qty" class="field num" type="number" min="1" value="1" oninput="calcTotal()"></div>
-        </div>
-        <label>To'lov turi</label>
-        <select id="o-pay" class="field"><option value="cash">Naqd</option><option value="click">Click</option><option value="payme">Payme</option><option value="debt">Qarz</option></select>
-        <div class="total-line"><span>Jami</span><span class="num" id="o-total">0 so'm</span></div>
-        <button class="btn" id="o-btn" onclick="addOrder()">Buyurtmani saqlash</button>
-        <div id="o-note" class="note"></div>
-      </div>
-      <div id="ord-area"></div>
+      <div class="panel-head"><div><h3>Yetkazilishi kerak</h3><div class="count" id="del-count"></div></div></div>
+      <div id="del-area"></div>
+    </div>
+  </div>
+
+  <!-- DEBTS -->
+  <div class="wrap hidden" id="page-debts">
+    <div class="page-title"><h2>Qarz / To'lov</h2><p>Qarzdorlar va to'lov qabul qilish.</p></div>
+    <div class="panel">
+      <div class="panel-head"><div><h3>Qarzdorlar</h3><div class="count" id="debt-count"></div></div></div>
+      <div id="debt-area"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>So'nggi to'lovlar</h3></div>
+      <div id="pay-area"></div>
+    </div>
+  </div>
+
+  <!-- STAFF -->
+  <div class="wrap hidden" id="page-staff">
+    <div class="page-title"><h2>Xodimlar</h2><p>Jamoangiz: operator, haydovchi, buxgalter.</p></div>
+    <div class="panel">
+      <div class="panel-head"><div><h3>Xodimlar</h3><div class="count" id="staff-count"></div></div></div>
+      <div id="staff-area"></div>
+    </div>
+    <div class="panel"><div class="panel-pad">
+      <div class="infobox">🔐 <b>Yangi xodimga login yaratish</b> brauzerdan xavfsizlik sababli mumkin emas (parol yaratish maxsus himoyani talab qiladi). Buni alohida xavfsiz funksiya orqali sozlaymiz — tayyor bo'lganda 5 daqiqada ko'rsataman. Hozircha xodimlar ro'yxatini shu yerda ko'rasiz.</div>
+    </div></div>
+  </div>
+
+  <!-- REPORTS -->
+  <div class="wrap hidden" id="page-reports">
+    <div class="page-title"><h2>Hisobot</h2><p>Sotuv va qarzlar bo'yicha xulosa.</p></div>
+    <div class="panel">
+      <div class="panel-head"><h3>Sotuv (yetkazilgan buyurtmalar)</h3></div>
+      <div class="panel-pad" id="rep-sales">Yuklanmoqda...</div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>Eng katta qarzdorlar</h3></div>
+      <div id="rep-debtors"></div>
     </div>
   </div>
 </div>
 
+<!-- MODAL -->
+<div class="modal-bg" id="modal-bg"><div class="modal"><div class="modal-head"><h3 id="modal-title">—</h3><button onclick="closeModal()">×</button></div><div class="modal-body" id="modal-body"></div></div></div>
+
 <script type="module">
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
-let sb=null; let me={id:null,name:'',role:''}; let products=[]; let custCache=[];
+let sb=null;
+let me={id:null,name:'',role:''};
+let products=[], drivers=[], custCache=[];
+let order={cust:null, addrId:null, productId:null, price:0, ptype:'refill', qty:1, pay:'cash'};
+
 const $=(id)=>document.getElementById(id);
 const show=(id)=>{['screen-config','screen-login','screen-app'].forEach(s=>$(s).classList.add('hidden'));$(id).classList.remove('hidden');};
 function note(id,msg,kind){const n=$(id);n.className='note '+kind;n.textContent=msg;}
 function esc(s){return String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));}
 const fmt=(n)=>(Number(n)||0).toLocaleString('ru-RU');
+const todayISO=()=>{const d=new Date();d.setHours(0,0,0,0);return d.toISOString();};
+const isToday=(ts)=>{if(!ts)return false;const d=new Date(ts);const n=new Date();return d.toDateString()===n.toDateString();};
+const ST={new:'Yangi',confirmed:'Tasdiqlangan',assigned:'Biriktirilgan',on_the_way:"Yo'lda",delivered:'Yetkazildi',not_home:"Uyda yo'q",cancelled:'Bekor',closed:'Yopilgan'};
+const PAY={cash:'Naqd',click:'Click',payme:'Payme',debt:'Qarz'};
 
+/* ---------- config / auth ---------- */
 window.saveConfig=()=>{
-  const url=$('cfg-url').value.trim().replace(/\/+$/,''); const key=$('cfg-key').value.trim();
+  const url=$('cfg-url').value.trim().replace(/\/+$/,'');const key=$('cfg-key').value.trim();
   if(!url||!key){note('cfg-note','Ikkala maydonni to\'ldiring.','err');return;}
   if(!/^https:\/\/.+\.supabase\.co$/.test(url)){note('cfg-note','URL "https://...supabase.co" ko\'rinishida bo\'lsin.','err');return;}
   localStorage.setItem('sb_url',url);localStorage.setItem('sb_key',key);init();
@@ -225,30 +368,6 @@ window.doLogin=async()=>{
   await enterApp();
 };
 window.doLogout=async()=>{await sb.auth.signOut();show('screen-login');};
-window.toggleBox=(id)=>$(id).classList.toggle('show');
-window.switchTab=(t)=>{
-  $('tab-cust').classList.toggle('active',t==='cust');$('tab-ord').classList.toggle('active',t==='ord');
-  $('view-cust').classList.toggle('hidden',t!=='cust');$('view-ord').classList.toggle('hidden',t!=='ord');
-  if(t==='ord') loadOrders();
-};
-
-window.addCustomer=async()=>{
-  const name=$('c-name').value.trim();const phone=$('c-phone').value.trim();
-  const type=$('c-type').value;const addr=$('c-addr').value.trim();const land=$('c-land').value.trim();
-  if(!name){note('c-note','Ismni kiriting.','err');return;}
-  if(!/^[0-9]{7,15}$/.test(phone)){note('c-note','Telefon faqat raqam, 7-15 ta.','err');return;}
-  const b=$('c-btn');b.disabled=true;b.textContent='Saqlanmoqda...';
-  const {data:cust,error}=await sb.from('customers').insert({full_name:name,phone,customer_type:type,created_by:me.id}).select('id').single();
-  if(error){b.disabled=false;b.textContent='Saqlash';note('c-note',/duplicate|unique/i.test(error.message)?'Bu telefon allaqachon ro\'yxatda.':error.message,'err');return;}
-  if(addr){
-    const {error:ae}=await sb.from('customer_addresses').insert({customer_id:cust.id,address_text:addr,landmark:land||null,is_primary:true});
-    if(ae){b.disabled=false;b.textContent='Saqlash';note('c-note','Mijoz qo\'shildi, lekin manzilda xato: '+ae.message,'err');await loadCustomers();return;}
-  }
-  b.disabled=false;b.textContent='Saqlash';
-  note('c-note','Mijoz qo\'shildi ✓','ok');
-  ['c-name','c-phone','c-addr','c-land'].forEach(i=>$(i).value='');
-  await loadCustomers();await loadStats();
-};
 
 async function enterApp(){
   const {data:{session}}=await sb.auth.getSession();
@@ -260,112 +379,330 @@ async function enterApp(){
   $('app-name').textContent=me.name;$('app-role').textContent=me.role;
   $('greet-h').textContent='Salom, '+me.name.split(' ')[0]+' 👋';
   show('screen-app');
-  await loadProducts();await loadStats();await loadCustomers();
+  await Promise.all([loadProducts(), loadDrivers(), loadCustomers()]);
+  go('dash');
 }
 
+/* ---------- navigation ---------- */
+window.go=(s)=>{
+  document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.s===s));
+  ['dash','orders','customers','delivery','debts','staff','reports'].forEach(p=>$('page-'+p).classList.toggle('hidden',p!==s));
+  window.scrollTo(0,0);
+  if(s==='dash')loadDash();
+  if(s==='orders')loadOrders();
+  if(s==='customers')renderCustomers();
+  if(s==='delivery')loadDelivery();
+  if(s==='debts'){loadDebts();loadPayments();}
+  if(s==='staff')loadStaff();
+  if(s==='reports')loadReports();
+};
+window.toggleBox=(id)=>$(id).classList.toggle('show');
+window.closeModal=()=>$('modal-bg').classList.remove('show');
+function openModal(title,html){$('modal-title').textContent=title;$('modal-body').innerHTML=html;$('modal-bg').classList.add('show');}
+$('modal-bg').addEventListener('click',e=>{if(e.target===$('modal-bg'))closeModal();});
+
+/* ---------- reference data ---------- */
 async function loadProducts(){
   const {data}=await sb.from('products').select('id,name,type,unit_price').eq('is_active',true).order('unit_price');
   products=data||[];
-  $('o-prod').innerHTML=products.map(p=>`<option value="${p.id}" data-price="${p.unit_price}" data-type="${p.type}">${esc(p.name)} — ${fmt(p.unit_price)} so'm</option>`).join('');
+  order.productId=products[0]?.id||null;order.price=products[0]?.unit_price||0;order.ptype=products[0]?.type||'refill';
+  $('o-products').innerHTML=products.map((p,i)=>`<button type="button" class="choice ${i===0?'on':''}" data-pid="${p.id}" onclick="pickProduct('${p.id}')">${esc(p.name)}<small>${fmt(p.unit_price)} so'm</small></button>`).join('');
   calcTotal();
 }
-async function loadStats(){
-  const c=await sb.from('customers').select('*',{count:'exact',head:true}).is('deleted_at',null);
-  $('stat-cust').textContent=c.count??0;
-  const o=await sb.from('orders').select('*',{count:'exact',head:true}).is('deleted_at',null).not('status','in','(delivered,closed,cancelled)');
-  $('stat-ord').textContent=o.error?'—':(o.count??0);
+async function loadDrivers(){
+  const {data}=await sb.from('staff_profiles').select('id,full_name,status,roles!inner(name)').eq('roles.name','driver').eq('status','active');
+  drivers=data||[];
 }
-
 async function loadCustomers(){
-  const area=$('cust-area');
-  const {data,error}=await sb.from('customers').select('id,full_name,phone,customer_type,current_debt_balance,customer_addresses(address_text,is_primary)').is('deleted_at',null).order('created_at',{ascending:false}).limit(100);
-  if(error){area.innerHTML='<div class="empty">Xato: '+esc(error.message)+'</div>';return;}
+  const {data}=await sb.from('customers').select('id,full_name,phone,customer_type,current_debt_balance,customer_addresses(id,address_text,is_primary)').is('deleted_at',null).order('created_at',{ascending:false}).limit(500);
   custCache=data||[];
-  $('o-cust').innerHTML='<option value="">— mijozni tanlang —</option>'+custCache.map(c=>`<option value="${c.id}">${esc(c.full_name)} (${esc(c.phone)})</option>`).join('');
-  $('cust-count').textContent=custCache.length+' ta';
-  if(!custCache.length){area.innerHTML='<div class="empty"><div class="big">Hali mijoz yo\'q</div>Yuqoridagi tugma bilan boshlang.</div>';return;}
-  const rows=custCache.map(c=>{
-    const t=c.customer_type==='business'?'<span class="badge biz">Biznes</span>':'<span class="badge ind">Jismoniy</span>';
-    const d=Number(c.current_debt_balance)||0;
-    const debt=d>0?`<span class="debt has num">${fmt(d)} so'm</span>`:'<span class="debt zero">0</span>';
-    const addrList=(c.customer_addresses||[]);
-    const prim=addrList.find(a=>a.is_primary)||addrList[0];
-    const addr=prim?esc(prim.address_text):'<span style="color:var(--warn)">manzil yo\'q</span>';
-    return `<tr><td>${esc(c.full_name)}<div class="sub">📍 ${addr}</div></td><td class="num">${esc(c.phone)}</td><td class="hide-sm">${t}</td><td>${debt}</td></tr>`;
-  }).join('');
-  area.innerHTML=`<table><thead><tr><th>Ism / Manzil</th><th>Telefon</th><th class="hide-sm">Tur</th><th>Qarz</th></tr></thead><tbody>${rows}</tbody></table>`;
 }
 
-window.onCustChange=async()=>{
-  const id=$('o-cust').value;const wrap=$('o-addr-wrap');
-  if(!id){wrap.innerHTML='';return;}
-  const {data}=await sb.from('customer_addresses').select('id,address_text,is_primary').eq('customer_id',id).order('is_primary',{ascending:false});
-  if(data&&data.length){
-    wrap.innerHTML=`<label>Manzil</label><select id="o-addr" class="field">${data.map(a=>`<option value="${a.id}">${esc(a.address_text)}${a.is_primary?' (asosiy)':''}</option>`).join('')}</select>`;
+/* ---------- DASHBOARD ---------- */
+async function loadDash(){
+  const t=todayISO();
+  const today=await sb.from('orders').select('*',{count:'exact',head:true}).is('deleted_at',null).gte('created_at',t);
+  $('d-today').textContent=today.count??0;
+  const active=await sb.from('orders').select('*',{count:'exact',head:true}).is('deleted_at',null).not('status','in','(delivered,closed,cancelled)');
+  $('d-active').textContent=active.error?'—':(active.count??0);
+  const debtors=custCache.filter(c=>Number(c.current_debt_balance)>0);
+  $('d-debtors').textContent=debtors.length;
+  $('d-debt').textContent=fmt(debtors.reduce((s,c)=>s+Number(c.current_debt_balance||0),0))+" so'm";
+  const {data:deliv}=await sb.from('orders').select('total_amount,delivery_date,status').eq('status','delivered').not('delivery_date','is',null).order('delivery_date',{ascending:false}).limit(200);
+  const dl=(deliv||[]).filter(o=>isToday(o.delivery_date));
+  $('d-deliv').textContent=dl.length;
+  $('d-revenue').textContent=fmt(dl.reduce((s,o)=>s+Number(o.total_amount||0),0))+" so'm";
+  const {data:recent}=await sb.from('orders').select('order_number,total_amount,status,created_at,customers(full_name)').is('deleted_at',null).order('created_at',{ascending:false}).limit(6);
+  renderOrderTable($('d-recent'),recent||[],false);
+}
+
+/* ---------- ORDERS ---------- */
+window.custSearch=(q)=>{
+  const list=$('o-search-list');q=(q||'').trim().toLowerCase();
+  if(!q){list.classList.remove('show');list.innerHTML='';return;}
+  const matches=custCache.filter(c=>c.full_name.toLowerCase().includes(q)||c.phone.includes(q)).slice(0,8);
+  if(!matches.length){list.innerHTML='<div class="search-item">Topilmadi</div>';list.classList.add('show');return;}
+  list.innerHTML=matches.map(c=>`<div class="search-item" onclick="pickCust('${c.id}')">${esc(c.full_name)}<div class="sub">${esc(c.phone)}</div></div>`).join('');
+  list.classList.add('show');
+};
+window.pickCust=(id)=>{
+  const c=custCache.find(x=>x.id===id);if(!c)return;
+  order.cust=c;order.addrId=null;
+  $('o-search').value='';$('o-search-list').classList.remove('show');
+  $('o-picked').innerHTML=`<div class="picked"><b>${esc(c.full_name)}</b> · ${esc(c.phone)}<button onclick="clearCust()">o'zgartirish</button></div>`;
+  const addrs=(c.customer_addresses||[]);
+  if(addrs.length){
+    const prim=addrs.find(a=>a.is_primary)||addrs[0];order.addrId=prim.id;
+    $('o-addr-wrap').innerHTML=`<label>Manzil</label><select id="o-addr" class="field" onchange="setOrderAddr(this.value)">${addrs.map(a=>`<option value="${a.id}" ${a.id===prim.id?'selected':''}>${esc(a.address_text)}${a.is_primary?' (asosiy)':''}</option>`).join('')}</select>`;
   }else{
-    wrap.innerHTML=`<label>Manzil (bu mijozda yo'q — shu yerda qo'shing)</label><input id="o-newaddr" class="field" placeholder="Yetkazib berish manzili"><div class="hint">Saqlaganda bu manzil mijozga ham qo'shiladi.</div>`;
+    $('o-addr-wrap').innerHTML=`<label>Manzil (bu mijozda yo'q — kiriting)</label><input id="o-newaddr" class="field" placeholder="Yetkazib berish manzili">`;
   }
 };
-
-window.calcTotal=()=>{
-  const opt=$('o-prod').selectedOptions[0];const price=opt?Number(opt.dataset.price):0;
-  const qty=Math.max(1,parseInt($('o-qty').value)||1);
-  $('o-total').textContent=fmt(price*qty)+" so'm";
+window.clearCust=()=>{order.cust=null;order.addrId=null;$("o-picked").innerHTML="";$("o-addr-wrap").innerHTML="";};
+window.setOrderAddr=(v)=>{order.addrId=v;};
+window.setOrderAddr=(v)=>{order.addrId=v;};
+window.pickProduct=(id)=>{
+  const p=products.find(x=>x.id===id);if(!p)return;
+  order.productId=p.id;order.price=Number(p.unit_price);order.ptype=p.type;
+  document.querySelectorAll('#o-products .choice').forEach(b=>b.classList.toggle('on',b.dataset.pid===id));
+  calcTotal();
 };
+window.pickPay=(m)=>{order.pay=m;document.querySelectorAll('#o-pays .choice').forEach(b=>b.classList.toggle('on',b.dataset.pay===m));};
+window.qtyStep=(d)=>{order.qty=Math.max(1,order.qty+d);$('o-qty').value=order.qty;calcTotal();};
+window.calcTotal=()=>{$('o-total').textContent=fmt(order.price*order.qty)+" so'm";};
 
 window.addOrder=async()=>{
-  const custId=$('o-cust').value;
-  if(!custId){note('o-note','Mijozni tanlang.','err');return;}
-  const opt=$('o-prod').selectedOptions[0];
-  if(!opt){note('o-note','Mahsulotni tanlang.','err');return;}
-  const productId=opt.value;const price=Number(opt.dataset.price);const ptype=opt.dataset.type;
-  const qty=Math.max(1,parseInt($('o-qty').value)||1);
-  const pay=$('o-pay').value;
-  const orderType=ptype==='new_container'?'new_customer':'refill';
-
+  if(!order.cust){note('o-note','Mijozni tanlang.','err');return;}
+  if(!order.productId){note('o-note','Mahsulotni tanlang.','err');return;}
   const b=$('o-btn');b.disabled=true;b.textContent='Saqlanmoqda...';
-  let addrId=null;
-  const addrSel=$('o-addr');const newAddr=$('o-newaddr');
-  if(addrSel){addrId=addrSel.value;}
-  else if(newAddr){
+  // address
+  let addrId=order.addrId;
+  const newAddr=$('o-newaddr');
+  if(!addrId && newAddr){
     const v=newAddr.value.trim();
     if(!v){b.disabled=false;b.textContent='Buyurtmani saqlash';note('o-note','Manzilni kiriting.','err');return;}
-    const {data:a,error:ae}=await sb.from('customer_addresses').insert({customer_id:custId,address_text:v,is_primary:true}).select('id').single();
+    const {data:a,error:ae}=await sb.from('customer_addresses').insert({customer_id:order.cust.id,address_text:v,is_primary:true}).select('id').single();
     if(ae){b.disabled=false;b.textContent='Buyurtmani saqlash';note('o-note','Manzil xatosi: '+ae.message,'err');return;}
     addrId=a.id;
   }
-  if(!addrId){b.disabled=false;b.textContent='Buyurtmani saqlash';note('o-note','Manzil topilmadi. Mijozni qayta tanlang.','err');return;}
-
-  const {data:order,error}=await sb.from('orders').insert({
-    customer_id:custId,address_id:addrId,order_type:orderType,payment_method:pay,
-    total_amount:price*qty,created_by:me.id
-  }).select('id,order_number').single();
+  if(!addrId){b.disabled=false;b.textContent='Buyurtmani saqlash';note('o-note','Manzil topilmadi.','err');return;}
+  const total=order.price*order.qty;
+  const orderType=order.ptype==='new_container'?'new_customer':'refill';
+  const {data:ord,error}=await sb.from('orders').insert({customer_id:order.cust.id,address_id:addrId,order_type:orderType,payment_method:order.pay,total_amount:total,created_by:me.id}).select('id,order_number').single();
   if(error){b.disabled=false;b.textContent='Buyurtmani saqlash';note('o-note','Buyurtma xatosi: '+error.message,'err');return;}
-
-  const {error:ie}=await sb.from('order_items').insert({order_id:order.id,product_id:productId,quantity:qty,unit_price:price});
+  const {error:ie}=await sb.from('order_items').insert({order_id:ord.id,product_id:order.productId,quantity:order.qty,unit_price:order.price});
+  if(ie){b.disabled=false;b.textContent='Buyurtmani saqlash';note('o-note','Tarkib xatosi: '+ie.message,'err');await loadOrders();return;}
+  // debt
+  if(order.pay==='debt'){
+    const {error:de}=await sb.from('customer_debts').insert({customer_id:order.cust.id,order_id:ord.id,amount:total});
+    if(de){note('o-note','Buyurtma yaratildi, lekin qarz yozishda xato: '+de.message,'err');}
+  }
   b.disabled=false;b.textContent='Buyurtmani saqlash';
-  if(ie){note('o-note','Buyurtma yaratildi, lekin tarkibda xato: '+ie.message,'err');await loadOrders();return;}
-
-  note('o-note','Buyurtma yaratildi ✓  '+(order.order_number||''),'ok');
-  $('o-cust').value='';$('o-addr-wrap').innerHTML='';$('o-qty').value=1;calcTotal();
-  await loadOrders();await loadStats();
+  note('o-note','✓ Buyurtma yaratildi: '+(ord.order_number||''),'ok');
+  clearCust();order.qty=1;$('o-qty').value=1;calcTotal();
+  await loadCustomers();await loadOrders();
 };
 
 async function loadOrders(){
-  const area=$('ord-area');area.innerHTML='<div class="empty">Yuklanmoqda...</div>';
-  const {data,error}=await sb.from('orders').select('order_number,total_amount,status,created_at,payment_method,customers(full_name)').is('deleted_at',null).order('created_at',{ascending:false}).limit(50);
-  if(error){area.innerHTML='<div class="empty">Xato: '+esc(error.message)+'</div>';return;}
+  const {data,error}=await sb.from('orders').select('id,order_number,total_amount,status,created_at,payment_method,assigned_driver_id,customers(full_name)').is('deleted_at',null).order('created_at',{ascending:false}).limit(60);
+  if(error){$('ord-area').innerHTML='<div class="empty">Xato: '+esc(error.message)+'</div>';return;}
   $('ord-count').textContent=(data.length)+' ta';
-  if(!data.length){area.innerHTML='<div class="empty"><div class="big">Hali buyurtma yo\'q</div>Yuqoridagi tugma bilan birinchisini oling.</div>';return;}
-  const stMap={new:'Yangi',confirmed:'Tasdiqlangan',assigned:'Biriktirilgan',on_the_way:'Yo\'lda',delivered:'Yetkazildi',not_home:'Uyda yo\'q',cancelled:'Bekor',closed:'Yopilgan'};
-  const payMap={cash:'Naqd',click:'Click',payme:'Payme',debt:'Qarz'};
-  const rows=data.map(o=>{
+  renderOrderTable($('ord-area'),data,true);
+}
+function renderOrderTable(el,rows,actions){
+  if(!rows.length){el.innerHTML='<div class="empty"><div class="big">Buyurtma yo\'q</div></div>';return;}
+  const body=rows.map(o=>{
     const d=new Date(o.created_at).toLocaleDateString('ru-RU');
-    return `<tr><td><b>${esc(o.order_number||'—')}</b><div class="sub">${d}</div></td><td>${esc(o.customers?.full_name||'—')}</td><td class="num">${fmt(o.total_amount)} so'm<div class="sub">${payMap[o.payment_method]||esc(o.payment_method)}</div></td><td><span class="badge st">${stMap[o.status]||esc(o.status)}</span></td></tr>`;
+    let act='';
+    if(actions){
+      if(o.status==='new')act+=`<button class="act go" onclick="setStatus('${o.id}','confirmed')">Tasdiqlash</button>`;
+      if(['new','confirmed','assigned','on_the_way','not_home'].includes(o.status))act+=`<button class="act ok" onclick="setStatus('${o.id}','delivered')">Yetkazildi</button>`;
+      if(!['delivered','closed','cancelled'].includes(o.status))act+=`<button class="act" onclick="setStatus('${o.id}','cancelled')">Bekor</button>`;
+    }
+    return `<tr><td><b>${esc(o.order_number||'—')}</b><div class="sub">${d}</div></td><td>${esc(o.customers?.full_name||'—')}</td><td class="num">${fmt(o.total_amount)} so'm<div class="sub">${PAY[o.payment_method]||esc(o.payment_method)}</div></td><td><span class="badge st-${o.status}">${ST[o.status]||esc(o.status)}</span>${act?'<div>'+act+'</div>':''}</td></tr>`;
   }).join('');
-  area.innerHTML=`<table><thead><tr><th>Buyurtma</th><th>Mijoz</th><th>Summa</th><th>Holat</th></tr></thead><tbody>${rows}</tbody></table>`;
+  el.innerHTML=`<table><thead><tr><th>Buyurtma</th><th>Mijoz</th><th>Summa</th><th>Holat${actions?' / amal':''}</th></tr></thead><tbody>${body}</tbody></table>`;
+}
+window.setStatus=async(id,st)=>{
+  const patch={status:st};
+  if(st==='delivered')patch.delivery_date=new Date().toISOString();
+  const {error}=await sb.from('orders').update(patch).eq('id',id);
+  if(error){alert('Xato: '+error.message);return;}
+  await loadOrders();
+};
+
+/* ---------- CUSTOMERS ---------- */
+window.addCustomer=async()=>{
+  const name=$('c-name').value.trim();const phone=$('c-phone').value.trim();
+  const type=$('c-type').value;const addr=$('c-addr').value.trim();const land=$('c-land').value.trim();
+  if(!name){note('c-note','Ismni kiriting.','err');return;}
+  if(!/^[0-9]{7,15}$/.test(phone)){note('c-note','Telefon faqat raqam, 7-15 ta.','err');return;}
+  const b=$('c-btn');b.disabled=true;b.textContent='Saqlanmoqda...';
+  const {data:cust,error}=await sb.from('customers').insert({full_name:name,phone,customer_type:type,created_by:me.id}).select('id').single();
+  if(error){b.disabled=false;b.textContent='Saqlash';note('c-note',/duplicate|unique/i.test(error.message)?'Bu telefon allaqachon ro\'yxatda.':error.message,'err');return;}
+  if(addr){
+    const {error:ae}=await sb.from('customer_addresses').insert({customer_id:cust.id,address_text:addr,landmark:land||null,is_primary:true});
+    if(ae){b.disabled=false;b.textContent='Saqlash';note('c-note','Mijoz qo\'shildi, manzilda xato: '+ae.message,'err');await loadCustomers();renderCustomers();return;}
+  }
+  b.disabled=false;b.textContent='Saqlash';
+  note('c-note','✓ Mijoz qo\'shildi','ok');
+  ['c-name','c-phone','c-addr','c-land'].forEach(i=>$(i).value='');
+  await loadCustomers();renderCustomers();
+};
+window.renderCustomers=()=>{
+  const q=($('cust-search').value||'').trim().toLowerCase();
+  let list=custCache;
+  if(q)list=custCache.filter(c=>c.full_name.toLowerCase().includes(q)||c.phone.includes(q));
+  $('cust-count').textContent=list.length+' ta';
+  const area=$('cust-area');
+  if(!list.length){area.innerHTML='<div class="empty"><div class="big">Mijoz topilmadi</div></div>';return;}
+  const rows=list.map(c=>{
+    const t=c.customer_type==='business'?'<span class="badge biz">Biznes</span>':'<span class="badge ind">Jismoniy</span>';
+    const d=Number(c.current_debt_balance)||0;
+    const debt=d>0?`<span class="debt has num">${fmt(d)} so'm</span>`:'<span class="debt zero">0</span>';
+    const addrs=(c.customer_addresses||[]);const prim=addrs.find(a=>a.is_primary)||addrs[0];
+    const addr=prim?esc(prim.address_text):'<span style="color:var(--warn)">manzil yo\'q</span>';
+    return `<tr onclick="custDetail('${c.id}')" style="cursor:pointer"><td>${esc(c.full_name)}<div class="sub">📍 ${addr}</div></td><td class="num">${esc(c.phone)}</td><td class="hide-sm">${t}</td><td>${debt}</td></tr>`;
+  }).join('');
+  area.innerHTML=`<table><thead><tr><th>Ism / Manzil</th><th>Telefon</th><th class="hide-sm">Tur</th><th>Qarz</th></tr></thead><tbody>${rows}</tbody></table>`;
+};
+window.custDetail=async(id)=>{
+  const c=custCache.find(x=>x.id===id);if(!c)return;
+  openModal(c.full_name,'<div class="empty">Yuklanmoqda...</div>');
+  const {data:orders}=await sb.from('orders').select('order_number,total_amount,status,created_at').eq('customer_id',id).is('deleted_at',null).order('created_at',{ascending:false}).limit(10);
+  const addrs=(c.customer_addresses||[]);
+  const debt=Number(c.current_debt_balance)||0;
+  let html=`<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+    <div class="stat" style="flex:1"><div class="k">Telefon</div><div class="v sm num">${esc(c.phone)}</div></div>
+    <div class="stat" style="flex:1"><div class="k">Qarz</div><div class="v sm num" style="color:${debt>0?'var(--err)':'var(--ink)'}">${fmt(debt)}</div></div></div>`;
+  html+='<label style="margin-top:0">Manzillar</label>';
+  html+=addrs.length?addrs.map(a=>`<div style="padding:8px 0;border-bottom:1px solid var(--line)">📍 ${esc(a.address_text)}${a.is_primary?' <span class="badge st-confirmed">asosiy</span>':''}</div>`).join(''):'<div class="sub">Manzil yo\'q</div>';
+  html+='<label>So\'nggi buyurtmalar</label>';
+  html+=(orders&&orders.length)?('<table><tbody>'+orders.map(o=>`<tr><td><b>${esc(o.order_number||'—')}</b><div class="sub">${new Date(o.created_at).toLocaleDateString('ru-RU')}</div></td><td class="num">${fmt(o.total_amount)} so'm</td><td><span class="badge st-${o.status}">${ST[o.status]||esc(o.status)}</span></td></tr>`).join('')+'</tbody></table>'):'<div class="sub">Buyurtma yo\'q</div>';
+  openModal(c.full_name,html);
+};
+
+/* ---------- DELIVERY ---------- */
+async function loadDelivery(){
+  const area=$('del-area');
+  const {data,error}=await sb.from('orders').select('id,order_number,status,assigned_driver_id,address_id,customers(full_name,phone)').is('deleted_at',null).in('status',['new','confirmed','assigned','on_the_way','not_home']).order('created_at',{ascending:true}).limit(80);
+  if(error){area.innerHTML='<div class="empty">Xato: '+esc(error.message)+'</div>';return;}
+  $('del-count').textContent=(data.length)+' ta';
+  if(!data.length){area.innerHTML='<div class="empty"><div class="big">Hammasi yetkazilgan 🎉</div>Yetkazilishi kerak buyurtma yo\'q.</div>';return;}
+  const aIds=[...new Set(data.map(o=>o.address_id).filter(Boolean))];
+  let amap={};
+  if(aIds.length){const {data:addrs}=await sb.from('customer_addresses').select('id,address_text').in('id',aIds);(addrs||[]).forEach(a=>amap[a.id]=a.address_text);}
+  const drvOpts=(sel)=>'<option value="">— haydovchi —</option>'+drivers.map(d=>`<option value="${d.id}" ${d.id===sel?'selected':''}>${esc(d.full_name)}</option>`).join('');
+  const rows=data.map(o=>{
+    const addr=amap[o.address_id]||'—';
+    return `<tr><td><b>${esc(o.order_number||'—')}</b><div class="sub">${esc(o.customers?.full_name||'—')} · ${esc(o.customers?.phone||'')}</div><div class="sub">📍 ${esc(addr)}</div></td>
+    <td><span class="badge st-${o.status}">${ST[o.status]||esc(o.status)}</span><div><select class="inline-sel" onchange="assignDriver('${o.id}',this.value)">${drvOpts(o.assigned_driver_id)}</select></div></td>
+    <td><button class="act ok" onclick="setStatusD('${o.id}','delivered')">Yetkazildi</button><button class="act" onclick="setStatusD('${o.id}','not_home')">Uyda yo'q</button></td></tr>`;
+  }).join('');
+  area.innerHTML=`<table><thead><tr><th>Buyurtma / Manzil</th><th>Holat / Haydovchi</th><th>Amal</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+window.assignDriver=async(id,drv)=>{
+  if(!drivers.length){alert('Avval haydovchi qo\'shilishi kerak (Xodimlar).');loadDelivery();return;}
+  const patch=drv?{assigned_driver_id:drv,status:'assigned'}:{assigned_driver_id:null};
+  const {error}=await sb.from('orders').update(patch).eq('id',id);
+  if(error){alert('Xato: '+error.message);}
+  loadDelivery();
+};
+window.setStatusD=async(id,st)=>{
+  const patch={status:st};if(st==='delivered')patch.delivery_date=new Date().toISOString();
+  const {error}=await sb.from('orders').update(patch).eq('id',id);
+  if(error){alert('Xato: '+error.message);return;}
+  loadDelivery();loadCustomers();
+};
+
+/* ---------- DEBTS / PAYMENTS ---------- */
+async function loadDebts(){
+  await loadCustomers();
+  const debtors=custCache.filter(c=>Number(c.current_debt_balance)>0).sort((a,b)=>b.current_debt_balance-a.current_debt_balance);
+  $('debt-count').textContent=debtors.length+' ta';
+  const area=$('debt-area');
+  if(!debtors.length){area.innerHTML='<div class="empty"><div class="big">Qarzdor yo\'q 🎉</div></div>';return;}
+  area.innerHTML=`<table><thead><tr><th>Mijoz</th><th>Telefon</th><th>Qarz</th><th></th></tr></thead><tbody>${debtors.map(c=>`<tr><td>${esc(c.full_name)}</td><td class="num">${esc(c.phone)}</td><td class="debt has num">${fmt(c.current_debt_balance)} so'm</td><td><button class="act go" onclick="payModal('${c.id}')">To'lov</button></td></tr>`).join('')}</tbody></table>`;
+}
+window.payModal=async(id)=>{
+  const c=custCache.find(x=>x.id===id);if(!c)return;
+  openModal('To\'lov qabul qilish','<div class="empty">Yuklanmoqda...</div>');
+  const {data:debts}=await sb.from('customer_debts').select('id,amount,paid_amount,debt_date,status').eq('customer_id',id).is('deleted_at',null).in('status',['open','partially_paid']).order('debt_date',{ascending:true});
+  if(!debts||!debts.length){openModal('To\'lov',`<div class="empty">Ochiq qarz yo'q.</div>`);return;}
+  const opts=debts.map(d=>{const rem=Number(d.amount)-Number(d.paid_amount);return `<option value="${d.id}" data-rem="${rem}">${new Date(d.debt_date).toLocaleDateString('ru-RU')} — qoldiq ${fmt(rem)} so'm</option>`;}).join('');
+  const firstRem=Number(debts[0].amount)-Number(debts[0].paid_amount);
+  openModal('To\'lov: '+c.full_name,`
+    <label style="margin-top:0">Qaysi qarz</label>
+    <select id="pm-debt" class="field" onchange="pmRem()">${opts}</select>
+    <label>Summa (so'm)</label>
+    <input id="pm-amount" class="field num" type="number" value="${firstRem}">
+    <label>To'lov turi</label>
+    <select id="pm-method" class="field"><option value="cash">Naqd</option><option value="click">Click</option><option value="payme">Payme</option></select>
+    <button class="btn" id="pm-btn" onclick="collectPay('${id}')">To'lovni qabul qilish</button>
+    <div id="pm-note" class="note"></div>`);
+};
+window.pmRem=()=>{const o=$('pm-debt').selectedOptions[0];if(o)$('pm-amount').value=o.dataset.rem;};
+window.collectPay=async(custId)=>{
+  const debtId=$('pm-debt').value;
+  const amount=Number($('pm-amount').value);
+  const method=$('pm-method').value;
+  const o=$('pm-debt').selectedOptions[0];const rem=Number(o.dataset.rem);
+  if(!amount||amount<=0){note('pm-note','Summani kiriting.','err');return;}
+  if(amount>rem){note('pm-note','Qoldiqdan ko\'p bo\'lmasin (qoldiq: '+fmt(rem)+').','err');return;}
+  const b=$('pm-btn');b.disabled=true;b.textContent='Saqlanmoqda...';
+  const {data:pay,error:pe}=await sb.from('payments').insert({customer_id:custId,amount,payment_method:method,payment_type:'debt_payment',received_by:me.id}).select('id').single();
+  if(pe){b.disabled=false;b.textContent='To\'lovni qabul qilish';note('pm-note','To\'lov xatosi: '+pe.message,'err');return;}
+  const {error:de}=await sb.from('debt_payments').insert({debt_id:debtId,payment_id:pay.id,amount});
+  b.disabled=false;b.textContent='To\'lovni qabul qilish';
+  if(de){note('pm-note','To\'lov yozildi, lekin bog\'lashda xato: '+de.message,'err');return;}
+  note('pm-note','✓ To\'lov qabul qilindi','ok');
+  setTimeout(async()=>{closeModal();await loadCustomers();loadDebts();loadPayments();},900);
+};
+async function loadPayments(){
+  const {data,error}=await sb.from('payments').select('amount,payment_method,payment_type,created_at,customers(full_name)').is('deleted_at',null).order('created_at',{ascending:false}).limit(20);
+  const area=$('pay-area');
+  if(error){area.innerHTML='<div class="empty">Xato: '+esc(error.message)+'</div>';return;}
+  if(!data.length){area.innerHTML='<div class="empty">To\'lovlar yo\'q.</div>';return;}
+  area.innerHTML=`<table><thead><tr><th>Mijoz</th><th>Summa</th><th>Tur</th><th class="hide-sm">Sana</th></tr></thead><tbody>${data.map(p=>`<tr><td>${esc(p.customers?.full_name||'—')}</td><td class="num">${fmt(p.amount)} so'm</td><td>${PAY[p.payment_method]||esc(p.payment_method)}<div class="sub">${p.payment_type==='debt_payment'?'qarz':'buyurtma'}</div></td><td class="hide-sm sub">${new Date(p.created_at).toLocaleDateString('ru-RU')}</td></tr>`).join('')}</tbody></table>`;
 }
 
+/* ---------- STAFF ---------- */
+async function loadStaff(){
+  const {data,error}=await sb.from('staff_profiles').select('full_name,phone,status,roles(name)').order('created_at',{ascending:true});
+  const area=$('staff-area');
+  if(error){area.innerHTML='<div class="empty">Xato: '+esc(error.message)+'</div>';return;}
+  $('staff-count').textContent=(data.length)+' ta';
+  const RN={super_admin:'Bosh admin',director:'Direktor',operator:'Operator',driver:'Haydovchi',accountant:'Buxgalter'};
+  area.innerHTML=`<table><thead><tr><th>Ism</th><th>Telefon</th><th>Rol</th><th>Holat</th></tr></thead><tbody>${data.map(s=>`<tr><td>${esc(s.full_name)}</td><td class="num">${esc(s.phone)}</td><td>${RN[s.roles?.name]||esc(s.roles?.name||'—')}</td><td><span class="badge ${s.status==='active'?'st-delivered':'st-cancelled'}">${s.status==='active'?'Faol':'Bloklangan'}</span></td></tr>`).join('')}</tbody></table>`;
+}
+
+/* ---------- REPORTS ---------- */
+async function loadReports(){
+  const {data}=await sb.from('orders').select('total_amount,payment_method,delivery_date,status').eq('status','delivered').not('delivery_date','is',null).order('delivery_date',{ascending:false}).limit(500);
+  const rows=data||[];
+  const now=new Date();const weekAgo=new Date(now.getTime()-7*864e5);
+  const today=rows.filter(o=>isToday(o.delivery_date));
+  const week=rows.filter(o=>new Date(o.delivery_date)>=weekAgo);
+  const sum=(arr)=>arr.reduce((s,o)=>s+Number(o.total_amount||0),0);
+  const byPay=(arr)=>{const m={cash:0,click:0,payme:0,debt:0};arr.forEach(o=>{m[o.payment_method]=(m[o.payment_method]||0)+Number(o.total_amount||0);});return m;};
+  const wp=byPay(week);
+  $('rep-sales').innerHTML=`
+    <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:14px">
+      <div><div class="sub">Bugun</div><div style="font-family:Sora;font-weight:700;font-size:22px" class="num">${fmt(sum(today))} so'm</div><div class="sub">${today.length} buyurtma</div></div>
+      <div><div class="sub">So'nggi 7 kun</div><div style="font-family:Sora;font-weight:700;font-size:22px" class="num">${fmt(sum(week))} so'm</div><div class="sub">${week.length} buyurtma</div></div>
+    </div>
+    <div class="sub" style="margin-bottom:6px">7 kunlik to'lov turi bo'yicha:</div>
+    <table><tbody>
+      <tr><td>Naqd</td><td class="num">${fmt(wp.cash)} so'm</td></tr>
+      <tr><td>Click</td><td class="num">${fmt(wp.click)} so'm</td></tr>
+      <tr><td>Payme</td><td class="num">${fmt(wp.payme)} so'm</td></tr>
+      <tr><td>Qarz</td><td class="num">${fmt(wp.debt)} so'm</td></tr>
+    </tbody></table>`;
+  const debtors=custCache.filter(c=>Number(c.current_debt_balance)>0).sort((a,b)=>b.current_debt_balance-a.current_debt_balance).slice(0,5);
+  $('rep-debtors').innerHTML=debtors.length?`<table><tbody>${debtors.map(c=>`<tr><td>${esc(c.full_name)}<div class="sub">${esc(c.phone)}</div></td><td class="debt has num">${fmt(c.current_debt_balance)} so'm</td></tr>`).join('')}</tbody></table>`:'<div class="empty">Qarzdor yo\'q.</div>';
+}
+
+/* ---------- init ---------- */
 async function init(){
   const url=localStorage.getItem('sb_url');const key=localStorage.getItem('sb_key');
   if(!url||!key){show('screen-config');return;}
